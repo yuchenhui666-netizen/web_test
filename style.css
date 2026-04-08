@@ -31,117 +31,57 @@ body {
     padding-top: 60px;
     overflow-x: hidden;
     position: relative;
-    /* 新增：液态效果依赖的滤镜（关键） */
-    filter: contrast(150%);
 }
 
-/* 动态背景装饰：重构为液态流动容器 */
+/* ====================== 全新：多层精细模糊流动背景（像素级动画） ====================== */
 .background-decoration {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--bg-color); /* 基础背景色，配合滤镜形成液态融合 */
     z-index: -1;
-    /* 新增：液态效果核心滤镜 */
-    filter: blur(25px);
     overflow: hidden;
+    /* 4层独立模糊光晕 → 多层渐变 + 不同透明度 + 不同大小 */
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 90%, rgba(102, 126, 234, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 70% 20%, rgba(167, 139, 250, 0.14) 0%, transparent 35%);
+    /* 4组独立像素级移动动画 → 错落流动、超细腻 */
+    animation: 
+        bgLayer1 28s linear infinite,
+        bgLayer2 22s linear infinite reverse,
+        bgLayer3 32s linear infinite,
+        bgLayer4 26s linear infinite reverse;
 }
 
-/* 新增：液态 blob 基础样式 */
-.liquid-blob {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color), var(--personal-accent));
-    opacity: 0.7;
-    /* 开启硬件加速，动画更流畅 */
-    transform: translateZ(0);
-    will-change: transform;
+/* 第一层：大幅度慢流动 → 底层背景 */
+@keyframes bgLayer1 {
+    0%   { background-position: 0px 0px; }
+    50%  { background-position: 50px -30px; }
+    100% { background-position: 0px 0px; }
 }
 
-/* 新增：第一个 blob 动画 */
-.blob-1 {
-    width: 600px;
-    height: 600px;
-    top: -200px;
-    left: -100px;
-    animation: blob-move-1 20s infinite ease-in-out;
+/* 第二层：中速反向流动 → 中层光晕 */
+@keyframes bgLayer2 {
+    0%   { background-position: 0px 0px; }
+    50%  { background-position: -40px 25px; }
+    100% { background-position: 0px 0px; }
 }
 
-/* 新增：第二个 blob 动画 */
-.blob-2 {
-    width: 500px;
-    height: 500px;
-    bottom: -200px;
-    right: -100px;
-    animation: blob-move-2 18s infinite ease-in-out reverse;
+/* 第三层：小幅度精细微动 → 上层柔焦 */
+@keyframes bgLayer3 {
+    0%   { background-position: 0px 0px; }
+    50%  { background-position: 20px -15px; }
+    100% { background-position: 0px 0px; }
 }
 
-/* 新增：第三个 blob 动画 */
-.blob-3 {
-    width: 400px;
-    height: 400px;
-    top: 50%;
-    right: 50%;
-    animation: blob-move-3 25s infinite ease-in-out;
-}
-
-/* 新增：blob 移动动画 1 */
-@keyframes blob-move-1 {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-    25% {
-        transform: translate(80px, 60px) scale(1.1);
-    }
-    50% {
-        transform: translate(40px, 100px) scale(0.9);
-    }
-    75% {
-        transform: translate(-60px, 80px) scale(1.05);
-    }
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-}
-
-/* 新增：blob 移动动画 2 */
-@keyframes blob-move-2 {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-    25% {
-        transform: translate(-70px, 40px) scale(1.15);
-    }
-    50% {
-        transform: translate(-40px, -80px) scale(0.95);
-    }
-    75% {
-        transform: translate(50px, -60px) scale(1);
-    }
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-}
-
-/* 新增：blob 移动动画 3 */
-@keyframes blob-move-3 {
-    0% {
-        transform: translate(0, 0) scale(1) rotate(0deg);
-    }
-    25% {
-        transform: translate(100px, -50px) scale(1.1) rotate(90deg);
-    }
-    50% {
-        transform: translate(80px, 80px) scale(0.9) rotate(180deg);
-    }
-    75% {
-        transform: translate(-50px, 60px) scale(1.05) rotate(270deg);
-    }
-    100% {
-        transform: translate(0, 0) scale(1) rotate(360deg);
-    }
+/* 第四层：超小幅像素漂移 → 最顶层质感 */
+@keyframes bgLayer4 {
+    0%   { background-position: 0px 0px; }
+    50%  { background-position: -15px 10px; }
+    100% { background-position: 0px 0px; }
 }
 
 .container {
@@ -150,8 +90,6 @@ body {
     padding: 20px 20px 60px;
     text-align: center;
     animation: fadeInUp 0.8s ease-out;
-    /* 新增：隔离容器滤镜，避免内容被模糊 */
-    filter: none;
 }
 
 /* 头部区域：重点强化「喻晨辉」个人名称 */
@@ -313,27 +251,10 @@ body {
     }
 }
 
-/* 移动端适配：优化个人展示的移动端体验 */
+/* 移动端适配：优化个人展示的移动端体验 + 背景动画弱化 */
 @media (max-width: 600px) {
     body {
         padding-top: 40px; /* 减少顶部padding，适配手机 */
-        /* 移动端弱化滤镜，提升性能 */
-        filter: contrast(120%);
-    }
-    .background-decoration {
-        filter: blur(15px);
-    }
-    .blob-1 {
-        width: 400px;
-        height: 400px;
-    }
-    .blob-2 {
-        width: 350px;
-        height: 350px;
-    }
-    .blob-3 {
-        width: 300px;
-        height: 300px;
     }
     .name-title {
         font-size: 2.5rem; /* 适配手机字体大小 */
@@ -353,5 +274,9 @@ body {
     }
     .info-card {
         padding: 25px; /* 减少手机端卡片内边距 */
+    }
+    /* 背景动画移动端弱化，保证流畅 */
+    .background-decoration {
+        animation-duration: 20s, 16s, 24s, 18s;
     }
 }
