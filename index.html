@@ -3,14 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎来到我的小站</title>
+    <title>喻晨辉的个人网站</title>
     <link rel="stylesheet" href="style.css">
+    <!-- 引入简单的图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="background-decoration"></div>
+    
     <div class="container">
-        <h1>🎉 欢迎光临</h1>
-        <p>这是一个托管在 Vercel 上的基础静态网站。</p>
-        <div class="footer">Powered by Vercel</div>
+        <header class="hero-section">
+            <div class="avatar-placeholder">
+                <i class="fas fa-user-astronaut"></i>
+            </div>
+            <h1 class="name-title">你好，我是喻晨辉</h1>
+            <p class="subtitle">欢迎来到我的数字花园</p>
+            <div class="divider"></div>
+        </header>
+
+        <section class="content-section">
+            <div class="info-card">
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <h2>关于本站</h2>
+                <p>这是属于喻晨辉的个人网站。</p>
+                <p>这里托管于 Vercel，记录着我的思考、项目与成长。</p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <h2>正在探索</h2>
+                <p>人工智能 / 全栈开发 / 创意设计</p>
+                <p>保持好奇，永远热爱。</p>
+            </div>
+        </section>
+
+        <footer class="social-links">
+            <a href="#" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-btn" title="邮箱"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="social-btn" title="Twitter"><i class="fab fa-twitter"></i></a>
+        </footer>
+
+        <div class="footer-text">
+            &copy; 2026 Yuchenhui. Built with ❤️
+        </div>
     </div>
+
+    <script>
+        // 简单的交互：点击卡片有微动效
+        document.querySelectorAll('.info-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
 </body>
 </html>
