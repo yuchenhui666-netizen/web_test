@@ -3,395 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebTest - 开源测试平台</title>
-    <!-- 引入Tailwind CSS（美化核心） -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入Font Awesome（图标库） -->
+    <title>喻晨辉 - 个人技术仓库</title> <!-- 标题强化「技术仓库」，突出个人属性 -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 自定义Tailwind配置 -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#165DFF',
-                        secondary: '#36CFC9',
-                        dark: '#1D2129',
-                        light: '#F2F3F5'
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .bg-gradient-primary {
-                background: linear-gradient(135deg, #165DFF 0%, #36CFC9 100%);
-            }
-            .card-hover {
-                transition: all 0.3s ease;
-            }
-            .card-hover:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 12px 24px rgba(22, 93, 255, 0.15);
-            }
-        }
-    </style>
 </head>
-<body class="font-inter bg-light text-dark antialiased">
-    <!-- 导航栏 -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-code text-primary text-2xl"></i>
-                    <span class="text-xl font-bold text-dark">WebTest</span>
-                </div>
-
-                <!-- 导航菜单（桌面端） -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-dark hover:text-primary font-medium transition-colors">首页</a>
-                    <a href="#features" class="text-dark hover:text-primary font-medium transition-colors">功能</a>
-                    <a href="#open-source" class="text-dark hover:text-primary font-medium transition-colors">开源仓库</a>
-                    <a href="#contribute" class="text-dark hover:text-primary font-medium transition-colors">贡献指南</a>
-                </nav>
-
-                <!-- GitHub按钮 -->
-                <a href="https://github.com/yuchenhui666-netizen/web_test" target="_blank" 
-                   class="flex items-center space-x-2 bg-dark text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors">
-                    <i class="fa-brands fa-github"></i>
-                    <span class="hidden sm:inline">GitHub</span>
-                </a>
-
-                <!-- 移动端菜单按钮 -->
-                <button class="md:hidden text-dark hover:text-primary" id="menuBtn">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
+<body>
+    <div class="background-decoration"></div>
+    
+    <div class="container">
+        <header class="hero-section">
+            <div class="avatar-placeholder">
+                <span>喻</span> <!-- 替换图标为姓氏，强化个人专属标识 -->
             </div>
+            <h1 class="name-title">喻晨辉</h1> <!-- 简化标题，只保留名字，视觉更聚焦 -->
+            <p class="subtitle">个人技术仓库 & 数字作品集</p> <!-- 副标题明确「仓库/作品集」定位 -->
+            <div class="divider"></div>
+        </header>
+
+        <!-- 内容卡片聚焦「个人仓库/项目」，弱化通用化表述 -->
+        <section class="content-section">
+            <div class="info-card">
+                <div class="card-icon"><i class="fas fa-folder-open"></i></div> <!-- 替换图标为「文件夹」，贴合仓库属性 -->
+                <h2>我的仓库</h2>
+                <p>托管我的开源项目、学习笔记与实战代码。</p>
+                <p>记录技术成长的每一步，保持开源与分享的初心。</p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon"><i class="fas fa-laptop-code"></i></div> <!-- 替换图标为「代码笔记本」，更贴合技术探索 -->
+                <h2>技术方向</h2>
+                <p>人工智能 / 全栈开发 / 创意设计</p>
+                <p>持续探索技术边界，沉淀可落地的实践成果。</p>
+            </div>
+        </section>
+
+        <!-- 社交链接聚焦「个人技术账号」，替换为更贴合国内的平台，标注占位提示 -->
+        <footer class="social-links">
+            <a href="https://github.com/你的用户名" class="social-btn" title="我的GitHub仓库" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:你的邮箱@xxx.com" class="social-btn" title="联系我" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="https://gitee.com/你的用户名" class="social-btn" title="我的Gitee仓库" target="_blank"><i class="fab fa-git"></i></a> <!-- 替换Twitter为Gitee，更贴合国内场景 -->
+        </footer>
+
+        <div class="footer-text">
+            &copy; 2025 喻晨辉 · 个人技术仓库 | 所有代码仅作个人展示使用
         </div>
+    </div>
 
-        <!-- 移动端导航菜单 -->
-        <div class="md:hidden hidden bg-white shadow-md" id="mobileMenu">
-            <div class="container mx-auto px-4 py-3 space-y-3">
-                <a href="#home" class="block py-2 text-dark hover:text-primary">首页</a>
-                <a href="#features" class="block py-2 text-dark hover:text-primary">功能</a>
-                <a href="#open-source" class="block py-2 text-dark hover:text-primary">开源仓库</a>
-                <a href="#contribute" class="block py-2 text-dark hover:text-primary">贡献指南</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- 英雄区（首页） -->
-    <section id="home" class="bg-gradient-primary py-20 sm:py-28">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white text-shadow mb-6">
-                WebTest 开源测试平台
-            </h1>
-            <p class="text-white/90 text-[clamp(1rem,2vw,1.25rem)] max-w-3xl mx-auto mb-8">
-                轻量、高效、可扩展的Web测试工具集，开源免费，欢迎共建
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://github.com/yuchenhui666-netizen/web_test" target="_blank" 
-                   class="bg-white text-primary font-medium px-8 py-3 rounded-lg hover:bg-opacity-90 transition-colors">
-                    查看开源仓库
-                </a>
-                <a href="#features" 
-                   class="bg-transparent border-2 border-white text-white font-medium px-8 py-3 rounded-lg hover:bg-white/10 transition-colors">
-                    了解功能
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 功能区 -->
-    <section id="features" class="py-16 sm:py-24 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">核心功能</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">轻量级设计，覆盖Web测试全场景，满足个人与团队使用需求</p>
-            </div>
-
-            <!-- 功能卡片 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 卡片1 -->
-                <div class="bg-light rounded-xl p-6 card-hover">
-                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-file-code text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">代码校验</h3>
-                    <p class="text-gray-600">自动校验HTML/CSS/JS语法规范，输出详细错误提示，提升代码质量</p>
-                </div>
-
-                <!-- 卡片2 -->
-                <div class="bg-light rounded-xl p-6 card-hover">
-                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-mobile-screen-button text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">响应式测试</h3>
-                    <p class="text-gray-600">模拟多设备分辨率，实时预览页面适配效果，一键生成测试报告</p>
-                </div>
-
-                <!-- 卡片3 -->
-                <div class="bg-light rounded-xl p-6 card-hover">
-                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-chart-line text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">性能分析</h3>
-                    <p class="text-gray-600">检测页面加载速度、资源大小，提供性能优化建议，提升用户体验</p>
-                </div>
-
-                <!-- 卡片4 -->
-                <div class="bg-light rounded-xl p-6 card-hover">
-                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-shield-halved text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">安全检测</h3>
-                    <p class="text-gray-600">扫描常见Web安全漏洞，如XSS、CSRF等，保障网站安全</p>
-                </div>
-
-                <!-- 卡片5 -->
-                <div class="bg-light rounded-xl p-6 card-hover">
-                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-download text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">报告导出</h3>
-                    <p class="text-gray-600">支持导出PDF/JSON格式测试报告，便于存档和团队协作分享</p>
-                </div>
-
-                <!-- 卡片6 -->
-                <div class="bg-light rounded-xl p-6 card-hover">
-                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-cloud text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">云端同步</h3>
-                    <p class="text-gray-600">测试配置云端存储，多设备同步，无需重复设置</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 开源仓库区 -->
-    <section id="open-source" class="py-16 sm:py-24 bg-light">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div class="md:flex">
-                    <!-- 左侧装饰 -->
-                    <div class="md:w-1/3 bg-gradient-primary p-8 flex items-center justify-center">
-                        <i class="fa-brands fa-github text-white text-6xl"></i>
-                    </div>
-
-                    <!-- 右侧内容 -->
-                    <div class="md:w-2/3 p-8 sm:p-10">
-                        <h3 class="text-2xl font-bold mb-4">开源仓库</h3>
-                        <p class="text-gray-600 mb-6">本项目已完全开源，欢迎Star、Fork、提Issue或PR，一起完善项目</p>
-                        <div class="flex flex-col space-y-4">
-                            <div class="flex items-center space-x-3">
-                                <i class="fa-solid fa-link text-primary w-5 text-center"></i>
-                                <a href="https://github.com/yuchenhui666-netizen/web_test" target="_blank" 
-                                   class="text-primary hover:underline break-all">
-                                    https://github.com/yuchenhui666-netizen/web_test
-                                </a>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fa-solid fa-file-contract text-primary w-5 text-center"></i>
-                                <span class="text-gray-600">开源协议：MIT License</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fa-solid fa-code-fork text-primary w-5 text-center"></i>
-                                <span class="text-gray-600">最新版本：v1.2.0</span>
-                            </div>
-                        </div>
-                        <a href="https://github.com/yuchenhui666-netizen/web_test" target="_blank" 
-                           class="mt-6 inline-flex items-center space-x-2 bg-dark text-white px-6 py-2 rounded-lg hover:bg-primary transition-colors">
-                            <i class="fa-solid fa-star"></i>
-                            <span>Star 仓库</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 贡献指南区 -->
-    <section id="contribute" class="py-16 sm:py-24 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">如何贡献</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">无论你是开发者、设计师还是测试工程师，都可以参与到项目建设中</p>
-            </div>
-
-            <!-- 贡献步骤 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                <!-- 步骤1 -->
-                <div class="text-center card-hover p-6 bg-light rounded-xl">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-primary text-xl font-bold">1</span>
-                    </div>
-                    <h4 class="font-semibold text-lg mb-2">Fork 仓库</h4>
-                    <p class="text-gray-600 text-sm">点击仓库页面的Fork按钮，将代码复刻到你的GitHub账号</p>
-                </div>
-
-                <!-- 步骤2 -->
-                <div class="text-center card-hover p-6 bg-light rounded-xl">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-primary text-xl font-bold">2</span>
-                    </div>
-                    <h4 class="font-semibold text-lg mb-2">创建分支</h4>
-                    <p class="text-gray-600 text-sm">基于dev分支创建功能分支，命名规范：feature/xxx</p>
-                </div>
-
-                <!-- 步骤3 -->
-                <div class="text-center card-hover p-6 bg-light rounded-xl">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-primary text-xl font-bold">3</span>
-                    </div>
-                    <h4 class="font-semibold text-lg mb-2">提交代码</h4>
-                    <p class="text-gray-600 text-sm">提交信息规范，确保代码风格统一，附带功能说明</p>
-                </div>
-
-                <!-- 步骤4 -->
-                <div class="text-center card-hover p-6 bg-light rounded-xl">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-primary text-xl font-bold">4</span>
-                    </div>
-                    <h4 class="font-semibold text-lg mb-2">提PR</h4>
-                    <p class="text-gray-600 text-sm">向主仓库dev分支提交PR，填写详细的变更说明</p>
-                </div>
-            </div>
-
-            <!-- 贡献须知 -->
-            <div class="max-w-3xl mx-auto mt-12 bg-light rounded-xl p-6 sm:p-8">
-                <h4 class="font-semibold text-xl mb-4">贡献须知</h4>
-                <ul class="space-y-3 text-gray-600">
-                    <li class="flex items-start space-x-2">
-                        <i class="fa-solid fa-check text-primary mt-1"></i>
-                        <span>代码需遵循ESLint规范，无语法错误和警告</span>
-                    </li>
-                    <li class="flex items-start space-x-2">
-                        <i class="fa-solid fa-check text-primary mt-1"></i>
-                        <span>新增功能需附带单元测试，确保功能稳定性</span>
-                    </li>
-                    <li class="flex items-start space-x-2">
-                        <i class="fa-solid fa-check text-primary mt-1"></i>
-                        <span>Issue和PR需使用中文描述，清晰说明问题/需求</span>
-                    </li>
-                    <li class="flex items-start space-x-2">
-                        <i class="fa-solid fa-check text-primary mt-1"></i>
-                        <span>首次贡献可查看仓库的Good First Issue标签任务</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="bg-dark text-white py-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- 项目信息 -->
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fa-solid fa-code text-primary text-xl"></i>
-                        <span class="text-xl font-bold">WebTest</span>
-                    </div>
-                    <p class="text-gray-400 mb-4">轻量、高效、开源的Web测试平台</p>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/yuchenhui666-netizen/web_test" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fa-brands fa-github text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fa-solid fa-envelope text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fa-solid fa-globe text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 快速链接 -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
-                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">功能</a></li>
-                        <li><a href="#open-source" class="text-gray-400 hover:text-white transition-colors">开源仓库</a></li>
-                        <li><a href="#contribute" class="text-gray-400 hover:text-white transition-colors">贡献指南</a></li>
-                    </ul>
-                </div>
-
-                <!-- 开源信息 -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">开源信息</h4>
-                    <ul class="space-y-2">
-                        <li class="text-gray-400">
-                            <i class="fa-solid fa-file-contract mr-2"></i> MIT 协议
-                        </li>
-                        <li class="text-gray-400">
-                            <i class="fa-solid fa-code-branch mr-2"></i> 主分支: main
-                        </li>
-                        <li class="text-gray-400">
-                            <i class="fa-solid fa-clock mr-2"></i> 最后更新: 2024
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
-                <p>© 2024 WebTest. 基于 MIT 协议开源 | 仓库地址: 
-                    <a href="https://github.com/yuchenhui666-netizen/web_test" target="_blank" class="text-primary hover:underline">
-                        github.com/yuchenhui666-netizen/web_test
-                    </a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript 交互 -->
     <script>
-        // 移动端菜单切换
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    // 关闭移动端菜单
-                    mobileMenu.classList.add('hidden');
-                }
+        // 移除卡片点击缩放（避免「可交互/招募」暗示），保留hover的自然动效即可
+        // 如需保留轻量交互，可取消以下注释（建议删除，纯展示更贴合需求）
+        /*
+        document.querySelectorAll('.info-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
             });
         });
-
-        // 导航栏滚动效果
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('shadow-md');
-                header.classList.remove('shadow-sm');
-            } else {
-                header.classList.remove('shadow-md');
-                header.classList.add('shadow-sm');
-            }
-        });
+        */
     </script>
 </body>
 </html>
