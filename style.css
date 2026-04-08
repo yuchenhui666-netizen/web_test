@@ -31,230 +31,153 @@ body {
     padding-top: 60px;
     overflow-x: hidden;
     position: relative;
+    /* 新增：液态效果依赖的滤镜（关键） */
+    filter: contrast(150%);
 }
 
-/* ====================== 全新：多层精细模糊流动背景（像素级动画） ====================== */
+/* 动态背景装饰：强化个人专属感，渐变更聚焦 */
+/* 动态背景装饰：重构为液态流动容器 */
 .background-decoration {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.2) 0%, transparent 50%);
+    background-color: var(--bg-color); /* 基础背景色，配合滤镜形成液态融合 */
     z-index: -1;
+    /* 新增：液态效果核心滤镜 */
+    filter: blur(25px);
     overflow: hidden;
-    /* 4层独立模糊光晕 → 多层渐变 + 不同透明度 + 不同大小 */
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 90%, rgba(102, 126, 234, 0.18) 0%, transparent 40%),
-        radial-gradient(circle at 70% 20%, rgba(167, 139, 250, 0.14) 0%, transparent 35%);
-    /* 4组独立像素级移动动画 → 错落流动、超细腻 */
-    animation: 
-        bgLayer1 28s linear infinite,
-        bgLayer2 22s linear infinite reverse,
-        bgLayer3 32s linear infinite,
-        bgLayer4 26s linear infinite reverse;
 }
 
-/* 第一层：大幅度慢流动 → 底层背景 */
-@keyframes bgLayer1 {
-    0%   { background-position: 0px 0px; }
-    50%  { background-position: 50px -30px; }
-    100% { background-position: 0px 0px; }
+/* 新增：液态 blob 基础样式 */
+.liquid-blob {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--personal-accent));
+    opacity: 0.7;
+    /* 开启硬件加速，动画更流畅 */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
-/* 第二层：中速反向流动 → 中层光晕 */
-@keyframes bgLayer2 {
-    0%   { background-position: 0px 0px; }
-    50%  { background-position: -40px 25px; }
-    100% { background-position: 0px 0px; }
+/* 新增：第一个 blob 动画 */
+.blob-1 {
+    width: 600px;
+    height: 600px;
+    top: -200px;
+    left: -100px;
+    animation: blob-move-1 20s infinite ease-in-out;
 }
 
-/* 第三层：小幅度精细微动 → 上层柔焦 */
-@keyframes bgLayer3 {
-    0%   { background-position: 0px 0px; }
-    50%  { background-position: 20px -15px; }
-    100% { background-position: 0px 0px; }
+/* 新增：第二个 blob 动画 */
+.blob-2 {
+    width: 500px;
+    height: 500px;
+    bottom: -200px;
+    right: -100px;
+    animation: blob-move-2 18s infinite ease-in-out reverse;
 }
 
-/* 第四层：超小幅像素漂移 → 最顶层质感 */
-@keyframes bgLayer4 {
-    0%   { background-position: 0px 0px; }
-    50%  { background-position: -15px 10px; }
-    100% { background-position: 0px 0px; }
+/* 新增：第三个 blob 动画 */
+.blob-3 {
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    right: 50%;
+    animation: blob-move-3 25s infinite ease-in-out;
+}
+
+/* 新增：blob 移动动画 1 */
+@keyframes blob-move-1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(80px, 60px) scale(1.1);
+    }
+    50% {
+        transform: translate(40px, 100px) scale(0.9);
+    }
+    75% {
+        transform: translate(-60px, 80px) scale(1.05);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* 新增：blob 移动动画 2 */
+@keyframes blob-move-2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(-70px, 40px) scale(1.15);
+    }
+    50% {
+        transform: translate(-40px, -80px) scale(0.95);
+    }
+    75% {
+        transform: translate(50px, -60px) scale(1);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* 新增：blob 移动动画 3 */
+@keyframes blob-move-3 {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    25% {
+        transform: translate(100px, -50px) scale(1.1) rotate(90deg);
+    }
+    50% {
+        transform: translate(80px, 80px) scale(0.9) rotate(180deg);
+    }
+    75% {
+        transform: translate(-50px, 60px) scale(1.05) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) scale(1) rotate(360deg);
+    }
 }
 
 .container {
-    width: 100%;
-    max-width: 900px; /* 加宽容器，展示更多个人仓库内容 */
+@@ -51,6 +150,8 @@
     padding: 20px 20px 60px;
     text-align: center;
     animation: fadeInUp 0.8s ease-out;
+    /* 新增：隔离容器滤镜，避免内容被模糊 */
+    filter: none;
 }
 
 /* 头部区域：重点强化「喻晨辉」个人名称 */
-.hero-section {
-    margin-bottom: 60px;
-}
-
-.avatar-placeholder {
-    width: 140px; /* 放大头像，强化个人视觉焦点 */
-    height: 140px;
-    margin: 0 auto 30px;
-    background: linear-gradient(135deg, var(--primary-color), var(--personal-accent));
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 60px; /* 放大头像内文字 */
-    color: white;
-    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4); /* 强化头像阴影，更醒目 */
-    transition: transform 0.4s ease; /* 放慢动画，更优雅 */
-    border: 2px solid rgba(255, 255, 255, 0.1); /* 增加边框，提升精致感 */
-}
-
-.avatar-placeholder:hover {
-    transform: scale(1.08) rotate(3deg); /* 微调hover效果，更柔和 */
-}
-
-/* 核心：强化个人名称样式 */
-.name-title {
-    font-size: 3.2rem; /* 放大字体 */
-    font-weight: 900; /* 加粗，突出个人品牌 */
-    margin-bottom: 12px;
-    background: linear-gradient(to right, var(--personal-accent), #a78bfa, #fff); /* 渐变更贴合个人强调色 */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 2px; /* 增加字间距，提升高级感 */
-    position: relative;
-}
-
-/* 给名称加底部装饰线，强化焦点 */
-.name-title::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 3px;
-    background: linear-gradient(to right, var(--primary-color), var(--personal-accent));
-    border-radius: 3px;
-}
-
-.subtitle {
-    font-size: 1.3rem; /* 放大副标题 */
-    color: var(--text-sub);
-    font-weight: 300;
-    margin-bottom: 10px; /* 增加间距，优化呼吸感 */
-}
-
-.divider {
-    width: 80px; /* 加长分割线 */
-    height: 4px;
-    background: linear-gradient(to right, var(--primary-color), var(--personal-accent));
-    margin: 30px auto;
-    border-radius: 2px;
-}
-
-/* 内容卡片区域：适配「个人仓库展示」的视觉节奏 */
-.content-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 加宽卡片最小宽度 */
-    gap: 30px; /* 加大间距，避免拥挤 */
-    margin-bottom: 60px;
-}
-
-.info-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(12px); /* 加深模糊，提升质感 */
-    border: 1px solid rgba(255, 255, 255, 0.08); /* 加厚边框，更精致 */
-    padding: 35px; /* 加大内边距 */
-    border-radius: 18px; /* 加大圆角，更柔和 */
-    text-align: left;
-    transition: all 0.4s ease; /* 放慢过渡，更优雅 */
-    cursor: default; /* 去掉pointer，避免「可点击/招募」的暗示 */
-}
-
-.info-card:hover {
-    transform: translateY(-8px); /* 加大悬浮上移距离，更灵动 */
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(139, 92, 246, 0.4); /* 边框贴合个人强调色 */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); /* 加深阴影，强化层次感 */
-}
-
-.card-icon {
-    font-size: 2.2rem; /* 放大图标 */
-    margin-bottom: 20px; /* 加大间距 */
-    background: linear-gradient(135deg, var(--primary-color), var(--personal-accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.info-card h2 {
-    font-size: 1.4rem; /* 放大卡片标题 */
-    margin-bottom: 15px; /* 加大间距 */
-    color: var(--text-main);
-    font-weight: 700;
-}
-
-.info-card p {
-    font-size: 1rem; /* 放大卡片文本 */
-    color: var(--text-sub);
-    line-height: 1.7; /* 加大行高，提升可读性 */
-    margin-bottom: 8px;
-}
-
-/* 社交链接：弱化「招募式按钮感」，强化「个人联系方式」属性 */
-.social-links {
-    margin-bottom: 40px;
-}
-
-.social-btn {
-    display: inline-block;
-    width: 50px; /* 放大社交按钮 */
-    height: 50px;
-    line-height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-sub);
-    margin: 0 10px; /* 加大间距 */
-    font-size: 1.3rem; /* 放大图标 */
-    transition: all 0.4s ease;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.05); /* 增加边框，提升质感 */
-}
-
-.social-btn:hover {
-    background: linear-gradient(135deg, var(--primary-color), var(--personal-accent));
-    color: white;
-    transform: translateY(-5px); /* 加大悬浮上移，更醒目 */
-    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); /* 增加阴影，强化交互 */
-}
-
-.footer-text {
-    color: var(--text-sub);
-    font-size: 0.9rem; /* 放大页脚文字 */
-    opacity: 0.8; /* 提高不透明度，更清晰 */
-    margin-top: 20px;
-}
-
-/* 动画：微调时长，更贴合个人展示的优雅感 */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* 移动端适配：优化个人展示的移动端体验 + 背景动画弱化 */
+@@ -216,24 +317,41 @@
 @media (max-width: 600px) {
     body {
         padding-top: 40px; /* 减少顶部padding，适配手机 */
+        /* 移动端弱化滤镜，提升性能 */
+        filter: contrast(120%);
+    }
+    .background-decoration {
+        filter: blur(15px);
+    }
+    .blob-1 {
+        width: 400px;
+        height: 400px;
+    }
+    .blob-2 {
+        width: 350px;
+        height: 350px;
+    }
+    .blob-3 {
+        width: 300px;
+        height: 300px;
     }
     .name-title {
         font-size: 2.5rem; /* 适配手机字体大小 */
@@ -274,9 +197,5 @@ body {
     }
     .info-card {
         padding: 25px; /* 减少手机端卡片内边距 */
-    }
-    /* 背景动画移动端弱化，保证流畅 */
-    .background-decoration {
-        animation-duration: 20s, 16s, 24s, 18s;
     }
 }
