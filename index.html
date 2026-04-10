@@ -3,72 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎来到我的小站</title>
-    <title>喻晨辉的个人网站</title>
+    <title>Yuchenhui | WELCOME</title>
     <link rel="stylesheet" href="style.css">
-    <!-- 引入简单的图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- 液态背景容器：在原有 background-decoration 内新增液态 blob 元素 -->
-    <div class="background-decoration">
-        <div class="liquid-blob blob-1"></div>
-        <div class="liquid-blob blob-2"></div>
-        <div class="liquid-blob blob-3"></div>
-    </div>
-    
+    <div class="background-decoration"></div>
+
     <div class="container">
-        <h1>🎉 欢迎光临</h1>
-        <p>这是一个托管在 Vercel 上的基础静态网站。</p>
-        <div class="footer">Powered by Vercel</div>
         <header class="hero-section">
-            <div class="avatar-placeholder">
-                <i class="fas fa-user-astronaut"></i>
-            </div>
-            <h1 class="name-title">你好，我是喻晨辉</h1>
-            <p class="subtitle">欢迎来到我的数字花园</p>
-            <div class="divider"></div>
+            <h1 class="welcome-title">WELCOME</h1>
         </header>
 
-        <section class="content-section">
-    <!-- 关于本站卡片 - 仅添加 onclick 和 cursor 样式，其余完全保留 -->
-    <div class="info-card" onclick="window.open('https://www.yuanshen.com/#/', '_blank')" style="cursor: pointer;">
-        <div class="card-icon"><i class="fas fa-rocket"></i></div>
-        <h2>关于本站</h2>
-        <p>这是属于喻晨辉的个人网站。</p>
-        <p>这里托管于 Vercel，记录着我的思考、项目与成长。</p>
-    </div>
+        <section class="about-section" id="about">
+            <div class="about-hero">
+                <div class="avatar-placeholder" aria-hidden="true">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+                <p class="site-intro">欢迎来到我的小站</p>
+                <div class="motto-background" aria-hidden="true">Engage all.Achieve all.</div>
+                <p class="motto-foreground">Engage all. Achieve all.</p>
+                <h2 class="name-title">你好，我是喻晨辉</h2>
+                <p class="subtitle">欢迎来到我的数字花园，在这里记录我的想法、项目与成长。</p>
+                <a href="#about-cards" class="cta-btn">继续浏览</a>
+                <div class="divider"></div>
+            </div>
+        </section>
 
-    <!-- 正在探索卡片 - 仅添加 onclick 和 cursor 样式，其余完全保留 -->
-    <div class="info-card" onclick="window.open('https://www.yuanshen.com/#/', '_blank')" style="cursor: pointer;">
-        <div class="card-icon"><i class="fas fa-code"></i></div>
-        <h2>正在探索</h2>
-        <p>人工智能 / 全栈开发 / 创意设计</p>
-        <p>保持好奇，永远热爱。</p>
-    </div>
-</section>
+        <section class="content-section" id="about-cards">
+            <article class="info-card">
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <h3>关于本站</h3>
+                <p>这是属于喻晨辉的个人网站。</p>
+                <p>这里托管于 Vercel，记录着我的思考、项目与成长。</p>
+            </article>
+            <article class="info-card">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <h3>正在探索</h3>
+                <p>人工智能 / 全栈开发 / 创意设计</p>
+                <p>保持好奇，永远热爱。</p>
+            </article>
+            <article class="info-card">
+                <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3>近期在做</h3>
+                <p>打磨交互体验，整理学习笔记，构建属于自己的作品集。</p>
+                <p>希望每一次迭代，都让这个空间更像我。</p>
+            </article>
+        </section>
 
         <footer class="social-links">
-            <a href="#" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" class="social-btn" title="邮箱"><i class="fas fa-envelope"></i></a>
-            <a href="#" class="social-btn" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/yuchenhui666-netizen" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:yuchenhui666@gmail.com" class="social-btn" title="邮箱"><i class="fas fa-envelope"></i></a>
         </footer>
 
         <div class="footer-text">
-            &copy; 2026 Yuchenhui. Built with ❤️
+            &copy; 2026 Yuchenhui. Built with ❤️ · v0.15
         </div>
     </div>
 
     <script>
-        // 简单的交互：点击卡片有微动效
-        document.querySelectorAll('.info-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
+        const root = document.documentElement;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const hero = document.querySelector('.hero-section');
+        const about = document.querySelector('#about');
+
+        if (hero && about) {
+            hero.addEventListener('click', () => {
+                if (prefersReducedMotion) {
+                    about.scrollIntoView();
+                } else {
+                    about.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+
+        if (!prefersReducedMotion) {
+            document.addEventListener('mousemove', (event) => {
+                const x = (event.clientX / window.innerWidth - 0.5) * 2;
+                const y = (event.clientY / window.innerHeight - 0.5) * 2;
+                root.style.setProperty('--mouse-x', x.toFixed(3));
+                root.style.setProperty('--mouse-y', y.toFixed(3));
+            });
+
+            const revealItems = document.querySelectorAll('.hero-section, .about-section, .info-card, .social-links, .footer-text');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            revealItems.forEach((item) => observer.observe(item));
+        } else {
+            document.querySelectorAll('.hero-section, .about-section, .info-card, .social-links, .footer-text')
+                .forEach((item) => item.classList.add('is-visible'));
+        }
+
+        document.querySelectorAll('.info-card, .social-btn, .cta-btn').forEach((element) => {
+            element.addEventListener('click', () => {
+                element.classList.add('pressing');
+                setTimeout(() => element.classList.remove('pressing'), 180);
             });
         });
+
+        if (hero) {
+            hero.addEventListener('click', () => {
+                hero.classList.add('pressing');
+                setTimeout(() => hero.classList.remove('pressing'), 180);
+            });
+        }
     </script>
 </body>
 </html>
