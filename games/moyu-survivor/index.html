@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#30252f">
+  <meta name="description" content="摸鱼幸存者：躲开 DDL、早八与热心领导，在忙乱中坚持更久。">
+  <title>摸鱼幸存者｜喻晨辉</title>
+  <link rel="stylesheet" href="./game.css">
+  <script src="./game.js" defer></script>
+</head>
+<body>
+  <main id="app">
+    <canvas id="game" aria-label="摸鱼幸存者游戏区域"></canvas>
+    <div class="screen-noise" aria-hidden="true"></div>
+
+    <header id="hud" class="hidden" aria-live="polite">
+      <div class="hud-group"><span class="hud-chip">⏱ <b id="time">0.0</b>s</span><span class="hud-chip">LV.<b id="level">1</b></span></div>
+      <div class="xp-wrap"><div id="xpBar"></div></div>
+      <div class="hud-group right"><span class="hud-chip">🪙 <b id="runCoins">0</b></span><button id="panic" type="button">领导来了</button></div>
+    </header>
+    <div id="bossHud" class="boss-hud hidden"><span>热心大领导</span><div><i id="bossBar"></i></div></div>
+
+    <div id="touchControls" class="hidden" aria-label="触控操作">
+      <div id="joystick" aria-label="移动摇杆"><div id="stick"></div></div>
+      <button id="dash" type="button"><span>冲刺</span><small id="dashCd">READY</small></button>
+    </div>
+
+    <section id="menu" class="overlay show" aria-labelledby="gameTitle">
+      <div class="panel menu-panel">
+        <a class="back-link" href="/">← 返回作品集</a>
+        <p class="kicker">YUCHENHUI'S MINI GAME</p>
+        <h1 id="gameTitle">摸鱼<br><span>幸存者</span></h1>
+        <p class="intro">躲开 DDL、早八和临时任务。你会自动攻击最近的敌人，每次升级都能选择新的摸鱼技巧。</p>
+        <div class="menu-stats"><span>最佳纪录 <b id="bestTime">0.0s</b></span><span>金币余额 <b id="totalCoins">0</b></span></div>
+        <div class="menu-actions"><button id="start" class="pixel-btn primary" type="button">开始摸鱼 ▶</button><button id="openShop" class="pixel-btn" type="button">金币商店 🪙</button></div>
+        <p class="controls-note">电脑：WASD / 方向键移动 · 空格冲刺<br>手机：左侧摇杆移动 · 右侧按钮冲刺</p>
+      </div>
+    </section>
+
+    <section id="upgrade" class="overlay" aria-labelledby="upgradeTitle">
+      <div class="panel wide-panel"><p class="kicker">LEVEL UP!</p><h2 id="upgradeTitle">选择一项摸鱼技巧</h2><div id="upgradeChoices" class="choice-grid"></div></div>
+    </section>
+
+    <section id="gameOver" class="overlay" aria-labelledby="overTitle">
+      <div class="panel"><p class="kicker">SHIFT ENDED</p><h2 id="overTitle">被工作抓住了！</h2><div class="result-grid"><span>生存时间<b id="finalTime">0.0s</b></span><span>本局金币<b id="earnedCoins">0</b></span><span>达到等级<b id="finalLevel">1</b></span></div><div class="menu-actions"><button id="restart" class="pixel-btn primary" type="button">再摸一次</button><button id="overShop" class="pixel-btn" type="button">进入商店</button></div><a class="text-link" href="/">返回个人主页</a></div>
+    </section>
+
+    <section id="shop" class="overlay" aria-labelledby="shopTitle">
+      <div class="panel wide-panel shop-panel"><button id="closeShop" class="close-btn" type="button" aria-label="关闭商店">×</button><p class="kicker">PERMANENT BUFF</p><h2 id="shopTitle">摸鱼装备商店</h2><p>永久强化会保存在当前浏览器。余额：<strong>🪙 <span id="shopCoins">0</span></strong></p><div id="shopItems" class="shop-grid"></div></div>
+    </section>
+
+    <section id="work" class="work-screen" aria-labelledby="workTitle">
+      <div class="work-card"><div class="work-head"><div><h2 id="workTitle">志愿服务咨询登记</h2><p>现场咨询记录与来访信息整理</p></div><span>ONLINE</span></div><label>咨询类型<select><option>校园指引</option><option>活动咨询</option><option>失物招领</option><option>其他</option></select></label><label>来访人数<input value="0"></label><label>咨询时间<input id="fakeTime"></label><label>处理情况<textarea placeholder="暂无新的咨询记录。"></textarea></label><button id="returnGame" type="button">返回值班界面</button></div>
+    </section>
+  </main>
+</body>
+</html>
