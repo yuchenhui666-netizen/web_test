@@ -2,12 +2,13 @@
   "version": 2,
   "builds": [
     {
-      "src": "**/*.{html,css,js}",
+      "src": "**/*.{html,css,js,png,svg,webp}",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/games/moyu-survivor/?", "dest": "/games/moyu-survivor/index.html" },
     { "src": "/(.*)", "dest": "/" }
   ]
 }
