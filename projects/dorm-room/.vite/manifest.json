@@ -1,17 +1,17 @@
 {
   "_framework-D_rUT4EX.js": {
-    "file": "/projects/dorm-room/_next/static/chunks/framework-D_rUT4EX.js",
+    "file": "projects/dorm-room/_next/static/chunks/framework-D_rUT4EX.js",
     "name": "framework",
     "imports": [
       "_rolldown-runtime-C60lm6uB.js"
     ]
   },
   "_rolldown-runtime-C60lm6uB.js": {
-    "file": "/projects/dorm-room/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
+    "file": "projects/dorm-room/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
     "name": "rolldown-runtime"
   },
   "app/page.tsx": {
-    "file": "/projects/dorm-room/_next/static/chunks/page-C6HeQo3g.js",
+    "file": "projects/dorm-room/_next/static/chunks/page-D2UmLznk.js",
     "name": "page",
     "src": "app/page.tsx",
     "isDynamicEntry": true,
@@ -25,13 +25,13 @@
     ]
   },
   "lib/viewer.ts": {
-    "file": "/projects/dorm-room/_next/static/chunks/viewer-95hOWZZp.js",
+    "file": "projects/dorm-room/_next/static/chunks/viewer-BJwgkVMG.js",
     "name": "viewer",
     "src": "lib/viewer.ts",
     "isDynamicEntry": true
   },
   "node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js": {
-    "file": "/projects/dorm-room/_next/static/chunks/app-route-prefetch-policy-SC5yhWFg.js",
+    "file": "projects/dorm-room/_next/static/chunks/app-route-prefetch-policy-PgoMAQVO.js",
     "name": "app-route-prefetch-policy",
     "src": "node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js",
     "isDynamicEntry": true,
@@ -40,7 +40,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "/projects/dorm-room/_next/static/chunks/layout-segment-context-mUzNhASs.js",
+    "file": "projects/dorm-room/_next/static/chunks/layout-segment-context-CLFj0r9r.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -51,7 +51,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/streamed-icons.js": {
-    "file": "/projects/dorm-room/_next/static/chunks/streamed-icons-BbokXyyW.js",
+    "file": "projects/dorm-room/_next/static/chunks/streamed-icons-BbokXyyW.js",
     "name": "streamed-icons",
     "src": "node_modules/vinext/dist/shims/streamed-icons.js",
     "isDynamicEntry": true,
@@ -61,7 +61,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "/projects/dorm-room/_next/static/chunks/index-CHZDBRwr.js",
+    "file": "projects/dorm-room/_next/static/chunks/index-BRdhF_rQ.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
