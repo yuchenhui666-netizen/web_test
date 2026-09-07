@@ -9,6 +9,7 @@
   "routes": [
     { "handle": "filesystem" },
     { "src": "/games/moyu-survivor/?", "dest": "/games/moyu-survivor/index.html" },
+    { "src": "/projects/dorm-room/?", "dest": "/projects/dorm-room/index.html" },
     { "src": "/(.*)", "dest": "/" }
   ]
 }
